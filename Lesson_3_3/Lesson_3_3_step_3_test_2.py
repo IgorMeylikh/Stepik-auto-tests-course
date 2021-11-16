@@ -1,26 +1,28 @@
 from selenium import webdriver
-#import unittest
+import pytest
 import time
 
-def setup_method(self):
-    print("start browser for test..")
-    self.browser = webdriver.Chrome()
+@pytest.fixture
 
-def teardown_method(self):
-    print("quit browser for test..")
-    self.browser.quit()
+def browser():
+    print("\nstart browser for test..")
+    browser = webdriver.Chrome()
+    yield browser
+    # этот код выполнится после завершения теста
+    print("\nquit browser..")
+    browser.quit()
 
-def input_field_and_send_form(link, first_name, last_name, user_email):
+def input_field_and_send_form(link, first_name, last_name, user_email, browser):
     
-    self.browser.get(link)
+    browser.get(link)
     # Ваш код, который заполняет обязательные поля
-    first_field = self.browser.find_element_by_xpath("//input[@placeholder = 'Input your first name']")
+    first_field = browser.find_element_by_xpath("//input[@placeholder = 'Input your first name']")
     first_field.send_keys(first_name)
 
-    second_field = self.browser.find_element_by_xpath("//input[@placeholder = 'Input your last name']") 
+    second_field = browser.find_element_by_xpath("//input[@placeholder = 'Input your last name']") 
     second_field.send_keys(last_name)    
 
-    third_field = self.browser.find_element_by_xpath("//input[@placeholder = 'Input your email']") 
+    third_field = browser.find_element_by_xpath("//input[@placeholder = 'Input your email']") 
     third_field.send_keys(user_email)  
 
     # Отправляем заполненную форму
@@ -29,21 +31,21 @@ def input_field_and_send_form(link, first_name, last_name, user_email):
 
     # Проверяем, что смогли зарегистрироваться
     # ждем загрузки страницы
-    #time.sleep(1)   
+    time.sleep(1)   
 
     # находим элемент, содержащий текст
-    welcome_text_elt = self.browser.find_element_by_tag_name("h1")
+    welcome_text_elt = browser.find_element_by_tag_name("h1")
     # записываем в переменную welcome_text текст из элемента welcome_text_elt
     welcome_text = welcome_text_elt.text 
     
-    return welcome_text     
-    
-def test_link_1(self):
-    result_func = input_field_and_send_form('http://suninjuly.github.io/registration1.html', 'First name', 'Last name', 'email@mail.ru')
+    return welcome_text      
+     
+def test_link_1(browser):
+    result_func = input_field_and_send_form('http://suninjuly.github.io/registration1.html', 'First name', 'Last name', 'email@mail.ru', browser)
     # с помощью assert проверяем, что ожидаемый текст совпадает с текстом на странице сайта
     assert "Congratulations! You have successfully registered!" == result_func, "Failed"
-def test_link_2(self):
-    result_func = input_field_and_send_form('http://suninjuly.github.io/registration2.html', 'First name', 'Last name', 'email@mail.ru')
+def test_link_2(browser):
+    result_func = input_field_and_send_form('http://suninjuly.github.io/registration2.html', 'First name', 'Last name', 'email@mail.ru', browser)
 
     # с помощью assert проверяем, что ожидаемый текст совпадает с текстом на странице сайта
     assert "Congratulations! You have successfully registered!" == result_func, "Failed"

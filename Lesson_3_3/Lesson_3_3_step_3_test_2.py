@@ -11,6 +11,7 @@ def browser():
     # этот код выполнится после завершения теста
     print("\nquit browser..")
     browser.quit()
+    
 
 def input_field_and_send_form(link, first_name, last_name, user_email, browser):
     

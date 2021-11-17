@@ -7,7 +7,8 @@ import pytest
 import time
 import math
 
-
+find_message = ''
+reference = 'Correct!'
 
 
 @pytest.fixture(scope="class")
@@ -17,9 +18,13 @@ def browser():
     yield browser
     print("\nquit browser..")
     browser.quit()
+    print('------------------------------------------------------------------------------------------------------------------------')
+    print('---------------------------------- Здесь наша гениальная строка --------------------------------------------------------')
+    print(f'----------------------------- {find_message} -----------------------------------------------------')
+    print('--------------------------------- /Здесь наша гениальная строка --------------------------------------------------------')
+    print('------------------------------------------------------------------------------------------------------------------------')
 
-find_message = ''
-reference = 'Correct!'
+
 linkFirst = "https://stepik.org/lesson/236895/step/1"
 #answer = math.log(int(time.time()))
 class TestCheckForms:
@@ -44,8 +49,8 @@ class TestCheckForms:
         # button_enter.click()
         # time.sleep(3)
 
-        # browser.find_element_by_id('id_login_email').send_keys('igordk87@gmail.com')
-        # browser.find_element_by_id('id_login_password').send_keys('1b6n5tEs')
+        # browser.find_element_by_id('id_login_email').send_keys('login')
+        # browser.find_element_by_id('id_login_password').send_keys('password')
         # time.sleep(1)
         # button_enter = browser.find_element(By.XPATH, '//button[text()="Войти"]')
         # button_enter.click()

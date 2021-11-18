@@ -73,3 +73,13 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 1637152989629	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
 JavaScript error: http://selenium1py.pythonanywhere.com/ru/, line 374: ReferenceError: oscar is not defined
 1637152993384	Marionette	INFO	Stopped listening on port 62836
+1637209841880	geckodriver	INFO	Listening on 127.0.0.1:62928
+1637209844963	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\IGOR~1.MEI\\AppData\\Local\\Temp\\rust_mozprofileiFnK1w"
+1637209846710	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\igor.meilih\\AppData\\Local\\Temp\\rust_mozprofileiFnK1w\\search.json.mozlz4", (void 0)))
+1637209853561	Marionette	INFO	Listening on port 62936
+1637209853985	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://selenium1py.pythonanywhere.com/ru/, line 374: ReferenceError: oscar is not defined
+1637209856001	Marionette	INFO	Stopped listening on port 62936
+[Parent 6328, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+[Parent 6328, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
